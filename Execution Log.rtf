@@ -1,0 +1,472 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red180\green36\blue25;\red153\green153\blue153;
+}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c76409\c21698\c12524;\csgenericrgb\c60000\c59998\c59999;
+}
+\margl1440\margr1440\vieww24820\viewh8700\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 ###########################################\
+#                                         #\
+#  Data Cleaning.                         #\
+#                                         #\
+###########################################\
+python3 data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db\
+Loading data...\
+    MESSAGES: data/disaster_messages.csv\
+    CATEGORIES: data/disaster_categories.csv\
+Cleaning data...\
+Saving data...\
+    DATABASE: data/DisasterResponse.db\
+Cleaned data saved to database!\
+\
+###########################################\
+#                                         #\
+#   Classifier export to PKL              #\
+#                                         #\
+###########################################\
+python3 models/train_classifier.py data/DisasterResponse.db models/classifier.pkl\
+Loading data...\
+    DATABASE: data/DisasterResponse.db\
+Building model...\
+Training model...\
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/model_selection/_split.py:1978: FutureWarning: The default value of cv will change from 3 to 5 in version 0.22. Specify it explicitly to silence this warning.\
+  warnings.warn(CV_WARNING, FutureWarning)\
+\
+Evaluating model...\
+Category: related \
+               precision    recall  f1-score   support\
+\
+           0       0.74      0.28      0.41      1229\
+           1       0.81      0.97      0.88      3976\
+           2       0.78      0.18      0.29        39\
+\
+    accuracy                           0.80      5244\
+   macro avg       0.78      0.48      0.53      5244\
+weighted avg       0.79      0.80      0.77      5244\
+\
+Accuracy of                   related: 0.80\
+Category: request \
+               precision    recall  f1-score   support\
+\
+           0       0.90      0.99      0.94      4383\
+           1       0.86      0.43      0.57       861\
+\
+    accuracy                           0.89      5244\
+   macro avg       0.88      0.71      0.75      5244\
+weighted avg       0.89      0.89      0.88      5244\
+\
+Accuracy of                   request: 0.89\
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/metrics/classification.py:1437: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.\
+  'precision', 'predicted', average, warn_for)\
+Category: offer \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      1.00      5216\
+           1       0.00      0.00      0.00        28\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.50      0.50      0.50      5244\
+weighted avg       0.99      0.99      0.99      5244\
+\
+Accuracy of                     offer: 0.99\
+Category: aid_related \
+               precision    recall  f1-score   support\
+\
+           0       0.77      0.88      0.82      3065\
+           1       0.79      0.63      0.70      2179\
+\
+    accuracy                           0.77      5244\
+   macro avg       0.78      0.75      0.76      5244\
+weighted avg       0.78      0.77      0.77      5244\
+\
+Accuracy of               aid_related: 0.77\
+Category: medical_help \
+               precision    recall  f1-score   support\
+\
+           0       0.92      1.00      0.96      4828\
+           1       0.61      0.03      0.06       416\
+\
+    accuracy                           0.92      5244\
+   macro avg       0.77      0.52      0.51      5244\
+weighted avg       0.90      0.92      0.89      5244\
+\
+Accuracy of              medical_help: 0.92\
+Category: medical_products \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.98      4972\
+           1       0.90      0.10      0.18       272\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.93      0.55      0.58      5244\
+weighted avg       0.95      0.95      0.93      5244\
+\
+Accuracy of          medical_products: 0.95\
+Category: search_and_rescue \
+               precision    recall  f1-score   support\
+\
+           0       0.97      1.00      0.99      5100\
+           1       0.78      0.05      0.09       144\
+\
+    accuracy                           0.97      5244\
+   macro avg       0.88      0.52      0.54      5244\
+weighted avg       0.97      0.97      0.96      5244\
+\
+Accuracy of         search_and_rescue: 0.97\
+Category: security \
+               precision    recall  f1-score   support\
+\
+           0       0.98      1.00      0.99      5150\
+           1       0.50      0.01      0.02        94\
+\
+    accuracy                           0.98      5244\
+   macro avg       0.74      0.51      0.51      5244\
+weighted avg       0.97      0.98      0.97      5244\
+\
+Accuracy of                  security: 0.98\
+Category: military \
+               precision    recall  f1-score   support\
+\
+           0       0.97      1.00      0.98      5070\
+           1       0.90      0.05      0.10       174\
+\
+    accuracy                           0.97      5244\
+   macro avg       0.93      0.53      0.54      5244\
+weighted avg       0.97      0.97      0.95      5244\
+\
+Accuracy of                  military: 0.97\
+Category: child_alone \
+               precision    recall  f1-score   support\
+\
+           0       1.00      1.00      1.00      5244\
+\
+    accuracy                           1.00      5244\
+   macro avg       1.00      1.00      1.00      5244\
+weighted avg       1.00      1.00      1.00      5244\
+\
+Accuracy of               child_alone: 1.00\
+Category: water \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.97      4907\
+           1       0.93      0.24      0.38       337\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.94      0.62      0.68      5244\
+weighted avg       0.95      0.95      0.94      5244\
+\
+Accuracy of                     water: 0.95\
+Category: food \
+               precision    recall  f1-score   support\
+\
+           0       0.93      0.99      0.96      4619\
+           1       0.89      0.45      0.60       625\
+\
+    accuracy                           0.93      5244\
+   macro avg       0.91      0.72      0.78      5244\
+weighted avg       0.93      0.93      0.92      5244\
+\
+Accuracy of                      food: 0.93\
+Category: shelter \
+               precision    recall  f1-score   support\
+\
+           0       0.93      1.00      0.96      4786\
+           1       0.88      0.26      0.40       458\
+\
+    accuracy                           0.93      5244\
+   macro avg       0.90      0.63      0.68      5244\
+weighted avg       0.93      0.93      0.91      5244\
+\
+Accuracy of                   shelter: 0.93\
+Category: clothing \
+               precision    recall  f1-score   support\
+\
+           0       0.98      1.00      0.99      5152\
+           1       0.86      0.13      0.23        92\
+\
+    accuracy                           0.98      5244\
+   macro avg       0.92      0.57      0.61      5244\
+weighted avg       0.98      0.98      0.98      5244\
+\
+Accuracy of                  clothing: 0.98\
+Category: money \
+               precision    recall  f1-score   support\
+\
+           0       0.98      1.00      0.99      5126\
+           1       0.75      0.03      0.05       118\
+\
+    accuracy                           0.98      5244\
+   macro avg       0.86      0.51      0.52      5244\
+weighted avg       0.97      0.98      0.97      5244\
+\
+Accuracy of                     money: 0.98\
+Category: missing_people \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      1.00      5192\
+           1       1.00      0.02      0.04        52\
+\
+    accuracy                           0.99      5244\
+   macro avg       1.00      0.51      0.52      5244\
+weighted avg       0.99      0.99      0.99      5244\
+\
+Accuracy of            missing_people: 0.99\
+Category: refugees \
+               precision    recall  f1-score   support\
+\
+           0       0.97      1.00      0.98      5065\
+           1       1.00      0.02      0.03       179\
+\
+    accuracy                           0.97      5244\
+   macro avg       0.98      0.51      0.51      5244\
+weighted avg       0.97      0.97      0.95      5244\
+\
+Accuracy of                  refugees: 0.97\
+Category: death \
+               precision    recall  f1-score   support\
+\
+           0       0.96      1.00      0.98      4999\
+           1       0.86      0.10      0.18       245\
+\
+    accuracy                           0.96      5244\
+   macro avg       0.91      0.55      0.58      5244\
+weighted avg       0.95      0.96      0.94      5244\
+\
+Accuracy of                     death: 0.96\
+Category: other_aid \
+               precision    recall  f1-score   support\
+\
+           0       0.87      1.00      0.93      4571\
+           1       0.50      0.01      0.02       673\
+\
+    accuracy                           0.87      5244\
+   macro avg       0.69      0.50      0.47      5244\
+weighted avg       0.82      0.87      0.81      5244\
+\
+Accuracy of                 other_aid: 0.87\
+Category: infrastructure_related \
+               precision    recall  f1-score   support\
+\
+           0       0.93      1.00      0.96      4866\
+           1       0.00      0.00      0.00       378\
+\
+    accuracy                           0.93      5244\
+   macro avg       0.46      0.50      0.48      5244\
+weighted avg       0.86      0.93      0.89      5244\
+\
+Accuracy of    infrastructure_related: 0.93\
+Category: transport \
+               precision    recall  f1-score   support\
+\
+           0       0.96      1.00      0.98      5000\
+           1       0.86      0.10      0.18       244\
+\
+    accuracy                           0.96      5244\
+   macro avg       0.91      0.55      0.58      5244\
+weighted avg       0.95      0.96      0.94      5244\
+\
+Accuracy of                 transport: 0.96\
+Category: buildings \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.97      4966\
+           1       0.72      0.05      0.09       278\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.84      0.52      0.53      5244\
+weighted avg       0.94      0.95      0.93      5244\
+\
+Accuracy of                 buildings: 0.95\
+Category: electricity \
+               precision    recall  f1-score   support\
+\
+           0       0.98      1.00      0.99      5130\
+           1       0.67      0.04      0.07       114\
+\
+    accuracy                           0.98      5244\
+   macro avg       0.82      0.52      0.53      5244\
+weighted avg       0.97      0.98      0.97      5244\
+\
+Accuracy of               electricity: 0.98\
+Category: tools \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      1.00      5205\
+           1       0.00      0.00      0.00        39\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.50      0.50      0.50      5244\
+weighted avg       0.99      0.99      0.99      5244\
+\
+Accuracy of                     tools: 0.99\
+Category: hospitals \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      0.99      5181\
+           1       0.00      0.00      0.00        63\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.49      0.50      0.50      5244\
+weighted avg       0.98      0.99      0.98      5244\
+\
+Accuracy of                 hospitals: 0.99\
+Category: shops \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      1.00      5213\
+           1       0.00      0.00      0.00        31\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.50      0.50      0.50      5244\
+weighted avg       0.99      0.99      0.99      5244\
+\
+Accuracy of                     shops: 0.99\
+Category: aid_centers \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      0.99      5179\
+           1       0.00      0.00      0.00        65\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.49      0.50      0.50      5244\
+weighted avg       0.98      0.99      0.98      5244\
+\
+Accuracy of               aid_centers: 0.99\
+Category: other_infrastructure \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.98      4991\
+           1       0.00      0.00      0.00       253\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.48      0.50      0.49      5244\
+weighted avg       0.91      0.95      0.93      5244\
+\
+Accuracy of      other_infrastructure: 0.95\
+Category: weather_related \
+               precision    recall  f1-score   support\
+\
+           0       0.87      0.96      0.91      3754\
+           1       0.87      0.63      0.73      1490\
+\
+    accuracy                           0.87      5244\
+   macro avg       0.87      0.80      0.82      5244\
+weighted avg       0.87      0.87      0.86      5244\
+\
+Accuracy of           weather_related: 0.87\
+Category: floods \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.97      4810\
+           1       0.90      0.42      0.57       434\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.93      0.71      0.77      5244\
+weighted avg       0.95      0.95      0.94      5244\
+\
+Accuracy of                    floods: 0.95\
+Category: storm \
+               precision    recall  f1-score   support\
+\
+           0       0.94      0.99      0.97      4722\
+           1       0.85      0.43      0.57       522\
+\
+    accuracy                           0.94      5244\
+   macro avg       0.90      0.71      0.77      5244\
+weighted avg       0.93      0.94      0.93      5244\
+\
+Accuracy of                     storm: 0.94\
+Category: fire \
+               precision    recall  f1-score   support\
+\
+           0       0.99      1.00      0.99      5179\
+           1       0.00      0.00      0.00        65\
+\
+    accuracy                           0.99      5244\
+   macro avg       0.49      0.50      0.50      5244\
+weighted avg       0.98      0.99      0.98      5244\
+\
+Accuracy of                      fire: 0.99\
+Category: earthquake \
+               precision    recall  f1-score   support\
+\
+           0       0.97      0.99      0.98      4753\
+           1       0.89      0.75      0.81       491\
+\
+    accuracy                           0.97      5244\
+   macro avg       0.93      0.87      0.90      5244\
+weighted avg       0.97      0.97      0.97      5244\
+\
+Accuracy of                earthquake: 0.97\
+Category: cold \
+               precision    recall  f1-score   support\
+\
+           0       0.98      1.00      0.99      5145\
+           1       0.57      0.13      0.21        99\
+\
+    accuracy                           0.98      5244\
+   macro avg       0.77      0.56      0.60      5244\
+weighted avg       0.98      0.98      0.98      5244\
+\
+Accuracy of                      cold: 0.98\
+Category: other_weather \
+               precision    recall  f1-score   support\
+\
+           0       0.95      1.00      0.97      4957\
+           1       0.50      0.01      0.01       287\
+\
+    accuracy                           0.95      5244\
+   macro avg       0.72      0.50      0.49      5244\
+weighted avg       0.92      0.95      0.92      5244\
+\
+Accuracy of             other_weather: 0.95\
+Category: direct_report \
+               precision    recall  f1-score   support\
+\
+           0       0.87      0.99      0.92      4279\
+           1       0.84      0.35      0.50       965\
+\
+    accuracy                           0.87      5244\
+   macro avg       0.86      0.67      0.71      5244\
+weighted avg       0.87      0.87      0.85      5244\
+\
+Accuracy of             direct_report: 0.87\
+Saving model...\
+    MODEL: models/classifier.pkl\
+Trained model saved!\
+\
+###########################################\
+#                                         #\
+#   Running Web App.                      #\
+#                                         #\
+###########################################\
+\
+\
+DHRISTOV-M-45B1:app dhristov$ python3 run.py \
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning:\
+\
+sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.\
+\
+ * Serving Flask app "run" (lazy loading)\
+ * Environment: production\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3    WARNING: This is a development server. Do not use it in a production deployment.\cf2 \
+\cf4    Use a production WSGI server instead.\cf2 \
+ * Debug mode: on\
+ * Running on http://0.0.0.0:3001/ (Press CTRL+C to quit)\
+ * Restarting with stat\
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning:\
+\
+sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.\
+\
+ * Debugger is active!\
+ * Debugger PIN: 118-339-240\
+\
+\
+Result are two file:\
+WebApp Screen.png \
+Classify Message.png\
+\
+classifier.pkl is large Fail. Hence it is pushed as compressed file}
