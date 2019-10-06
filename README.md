@@ -52,7 +52,3 @@ A web page provides user interface to query a database and visualize the query i
 1.   Check the visual graphs
 2.   Check the query Analysis
  
-
-
-!(WebApp\ Screen.png)
-!(Classify\ Message.png)
