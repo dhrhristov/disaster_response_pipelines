@@ -54,5 +54,5 @@ A web page provides user interface to query a database and visualize the query i
  
 
 
-!('WebApp Screen.png')
-!('Classify Message.png')
+!(WebApp\ Screen.png)
+!(Classify\ Message.png)
